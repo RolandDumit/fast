@@ -2,6 +2,7 @@ name: fast
 description: "Flutter App Starter Toolkit"
 version: 0.0.1
 homepage: https://github.com/RolandDumit/fast
+publish_to: none
 
 environment:
   sdk: ^3.6.2

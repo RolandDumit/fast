@@ -102,8 +102,7 @@ class NetworkDatasource {
       if (response.isSuccessful) {
         return Result.success(response.data);
       } else {
-        return Result.error(
-            RequestNotSuccessfulFailure(response.statusMessage, response: response));
+        return Result.error(RequestNotSuccessfulFailure(response.statusMessage, response: response));
       }
     } on DioException catch (error) {
       // Handle Dio exceptions
