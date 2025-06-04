@@ -9,10 +9,10 @@ class GeolocationCubit extends Cubit<GeolocationState> {
     bool trackContinuously = false,
     this.locationSettings = const LocationSettings(accuracy: LocationAccuracy.best),
   }) : super(LocationLoadingState()) {
-    _initialize().then((permission) {
-      if (permission) {
-        getUserLocation();
-      }
+    _initialize().then((permissionGranted) {
+      if (!permissionGranted) return;
+
+      getUserLocation();
 
       if (trackContinuously) {
         trackUserLocation();
