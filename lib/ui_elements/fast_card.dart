@@ -35,16 +35,16 @@ class FastCard extends StatelessWidget {
       clipBehavior: clip ?? Clip.none,
       transform: transform,
       transformAlignment: transformAlignment,
-      decoration: BoxDecoration(
+      decoration: ShapeDecoration(
         color: color ?? Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(borderRadius ?? 0),
-        boxShadow: shadow != null ? [shadow!] : null,
+        shape: RoundedSuperellipseBorder(
+            borderRadius: borderRadius != null ? BorderRadius.circular(borderRadius!) : BorderRadius.zero),
+        shadows: shadow != null ? [shadow!] : null,
       ),
       child: child,
     );
   }
 }
-
 
 class TestWidget extends Container {
   TestWidget(Widget? child) : super(key: null, child: child);
@@ -94,7 +94,8 @@ class TestWidget extends Container {
 
   Container setTransform(Matrix4 transform) => copyWith(transform: transform);
 
-  Container setTransformAlignment(AlignmentGeometry transformAlignment) => copyWith(transformAlignment: transformAlignment);
+  Container setTransformAlignment(AlignmentGeometry transformAlignment) =>
+      copyWith(transformAlignment: transformAlignment);
 
   Container setClip(Clip clip) => copyWith(clipBehavior: clip);
 
@@ -102,7 +103,8 @@ class TestWidget extends Container {
 
   Container setDecoration(Decoration decoration) => copyWith(decoration: decoration);
 
-  Container setForegroundDecoration(Decoration foregroundDecoration) => copyWith(foregroundDecoration: foregroundDecoration);
+  Container setForegroundDecoration(Decoration foregroundDecoration) =>
+      copyWith(foregroundDecoration: foregroundDecoration);
 
   Container setSize(double? width, double? height) => copyWith(width: width, height: height);
 
